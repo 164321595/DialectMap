@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中国方言文化地图</title>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://webapi.amap.com/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+    <!-- 配置Tailwind自定义颜色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#9C2C1A", // 中国红 - 主色调
+                        secondary: "#D4AF37", // 传统金 - 辅助色
+                        tertiary: "#5C4033", // 深棕色 - 强调色
+                        light: "#F9F4EF", // 米白色 - 背景色
+                        dark: "#2D2320", // 深褐色 - 文本色
+                    },
+                    fontFamily: {
+                        noto: ['"Noto Serif SC"', "serif"],
+                        sans: ['"Noto Sans SC"', "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities { .content-auto { content-visibility: auto; } .text-shadow { text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); } .text-shadow-lg { text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); } .bg-texture { background-image: url("data:image/svg+xml,%3Csvg
+        width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343
+        3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21
+        0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24
+        5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2
+        .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C2C1A' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E"); } .scroll-smooth { scroll-behavior:
+        smooth; } .bg-paper { background-color: #f9f4ef; background-image: linear-gradient( rgba(212, 175, 55, 0.03) 1px, transparent 1px ), linear-gradient( 90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px ); background-size: 20px 20px; } .text-gradient
+        { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(135deg, #9c2c1a, #d4af37); } }
+    </style>
+
+    <style>
+        /* 基础样式与背景风格 */
+        
+        body {
+            font-family: "Noto Sans SC", sans-serif;
+            background-color: #f9f4ef;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C2C1A' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            color: #2d2320;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        /* 自定义容器样式 - 符合传统主题 */
+        
+        .traditional-container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(156, 44, 26, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .traditional-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #9c2c1a, #d4af37);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .traditional-container:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .traditional-container:hover::before {
+            opacity: 1;
+        }
+        /* 地图容器样式 */
+        
+        .map-container {
+            height: 100%;
+            min-height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        /* 左侧列表项样式 */
+        
+        .dialect-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-radius: 6px;
+            border: 1px solid #e8e0d7;
+            background-color: white;
+            padding: 16px;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dialect-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient( 90deg, transparent, rgba(156, 44, 26, 0.03));
+            transition: width 0.5s ease;
+        }
+        
+        .dialect-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: #e8c8b0;
+        }
+        
+        .dialect-item:hover::after {
+            width: 100%;
+        }
+        
+        .dialect-item.active {
+            background-color: rgba(156, 44, 26, 0.04);
+            border-color: #c75146;
+            box-shadow: 0 4px 16px rgba(156, 44, 26, 0.08);
+            border-left-width: 4px;
+        }
+        /* 音频播放器样式 */
+        
+        .audio-player {
+            width: 100%;
+            height: 42px;
+            background: #f5f0eb;
+            border-radius: 21px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .audio-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #9c2c1a, #c75146);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .audio-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 21px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .audio-loading.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* 优化的信息框样式 */
+        
+        .marker-popup {
+            min-width: 280px;
+            padding: 18px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e8e0d7;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marker-popup::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #9c2c1a, #d4af37);
+        }
+        
+        .marker-popup h3 {
+            color: #2d2320;
+            font-size: 17px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f1ebe6;
+        }
+        
+        .marker-popup p {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        /* 搜索框样式 */
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border-radius: 6px;
+            border: 1px solid #e8e0d7;
+            background-color: rgba(255, 255, 255, 0.85);
+            outline: none;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .search-input:focus {
+            border-color: #9c2c1a;
+            box-shadow: 0 0 0 3px rgba(156, 44, 26, 0.1);
+            background-color: white;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #5c4033;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus+.search-icon {
+            color: #9c2c1a;
+            transform: translateY(-50%) scale(1.1);
+        }
+        /* 加载状态样式 */
+        
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: #5c4033;
+        }
+        
+        .loading i {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: inline-block;
+            color: #9c2c1a;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        /* 标记点样式 */
+        
+        .location-badge {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+        }
+        /* 列表内容样式 */
+        
+        .location-title {
+            font-weight: 600;
+            color: #2d2320;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .collector-info {
+            font-size: 13px;
+            color: #5c4033;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .collector-info i {
+            margin-right: 4px;
+            font-size: 12px;
+        }
+        
+        .content-text {
+            font-size: 14px;
+            color: #2d2320;
+            line-height: 1.5;
+            padding-left: 14px;
+            position: relative;
+        }
+        
+        .content-text::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: #5c4033;
+        }
+        
+        .audio-tag {
+            margin-top: 8px;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        
+        .audio-tag:hover {
+            transform: scale(1.05);
+        }
+        /* 页眉样式 */
+        
+        .site-header {
+            background-color: #9c2c1a;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .site-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #f9e076);
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+            margin: 0 12px;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #d4af37;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* Hero区域样式 */
+        
+        .hero-section {
+            background-color: #f9f4ef;
+            background-image: linear-gradient( rgba(212, 175, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            padding: 8rem 0;
+            /* 增加高度 */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 0.3s;
+        }
+        
+        .hero-title {
+            font-family: "Noto Serif SC", serif;
+            font-size: 3.5rem;
+            /* 加大标题 */
+            font-weight: 700;
+            color: #9c2c1a;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        
+        .hero-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #d4af37;
+            animation: growFromCenter 1s forwards 0.6s;
+            transform-origin: center;
+            transform: scaleX(0) translateX(-50%);
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            /* 加大描述文字 */
+            color: #5c4033;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.8s;
+        }
+        
+        .hero-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%239C2C1A' fill-opacity='0.05' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/svg%3E");
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .hero-decoration.top-left {
+            top: -80px;
+            left: -80px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .hero-decoration.bottom-right {
+            bottom: -80px;
+            right: -80px;
+            transform: rotate(180deg);
+            animation: float 10s ease-in-out infinite 2s;
+        }
+        
+        .hero-cta {
+            opacity: 0;
+            animation: fadeIn 1s forwards 1s;
+        }
+        /* 页脚样式 */
+        
+        .site-footer {
+            background-color: #2d2320;
+            color: #f9f4ef;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            font-family: "Noto Serif SC", serif;
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(249, 244, 239, 0.8);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #d4af37;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(249, 244, 239, 0.1);
+            color: rgba(249, 244, 239, 0.6);
+            font-size: 0.9rem;
+        }
+        /* 图表容器样式 */
+        
+        .charts-container {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 10px;
+        }
+        
+        .chart-wrapper {
+            height: 220px;
+            position: relative;
+            padding: 25px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .chart-wrapper:hover {
+            transform: translateY(-5px);
+        }
+        
+        #provincePieChart {
+            scale: 0.85;
+            margin-bottom: 30px;
+        }
+        
+        #provinceBarChart {
+            scale: 0.85;
+        }
+        
+        .chart-title {
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d2320;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* 响应式优化 */
+        
+        @media (max-width: 768px) {
+            .chart-wrapper {
+                height: 180px;
+                padding: 20px;
+            }
+            .layout-container {
+                flex-direction: column;
+            }
+            .list-container {
+                height: 350px;
+                overflow-y: auto;
+            }
+            .map-container {
+                height: 500px;
+            }
+            .chart-wrapper {
+                height: 250px;
+            }
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block !important;
+            }
+            .hero-section {
+                padding: 6rem 0;
+            }
+            .hero-description {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .charts-container {
+                flex-direction: row;
+            }
+            .chart-wrapper {
+                flex: 1;
+                min-height: 220px;
+                max-height: 240px;
+            }
+            .charts-container {
+                flex-direction: row;
+            }
+            .chart-wrapper {
+                flex: 1;
+                min-height: 300px;
+                max-height: 350px;
+            }
+        }
+        /* 自定义动画 */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes growFromCenter {
+            from {
+                transform: scaleX(0) translateX(-50%);
+            }
+            to {
+                transform: scaleX(1) translateX(-50%);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        /* 地图标记动画 */
+        
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .marker-bounce {
+            animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        /* 移动端菜单按钮 */
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* 文字悬停效果 */
+        
+        .hover-lift {
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端将控件移至右上角 */
+            .amap-toolbar {
+                /* 右上角布局 - 缩放控件 */
+                top: 30px !important;
+                right: 15px !important;
+                /* 距离右侧15px */
+                bottom: auto !important;
+                left: auto !important;
+            }
+            .amap-scale {
+                /* 右上角布局 - 比例尺，位于缩放控件下方 */
+                top: 200px !important;
+                right: 15px !important;
+                /* 与缩放控件右对齐 */
+                bottom: auto !important;
+                left: auto !important;
+                display: block !important;
+                /* 强制显示比例尺 */
+            }
+            /* 保持控件大小，确保触控友好 */
+            .amap-toolbar .amap-zoomcontrol {
+                width: 44px !important;
+            }
+            .amap-toolbar .amap-zoomcontrol a {
+                width: 44px !important;
+                height: 44px !important;
+                line-height: 44px !important;
+                font-size: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen p-4 md:p-8 bg-paper">
+    <!-- 动态生成favicon -->
+    <script>
+        function createFavicon() {
+            const canvas = document.createElement("canvas");
+            canvas.width = 32;
+            canvas.height = 32;
+            const ctx = canvas.getContext("2d");
+
+            // 背景圆 - 中国红
+            ctx.beginPath();
+            ctx.arc(16, 16, 14, 0, Math.PI * 2);
+            ctx.fillStyle = "#9C2C1A";
+            ctx.fill();
+
+            // 地图标记 - 传统金
+            ctx.beginPath();
+            ctx.moveTo(16, 6);
+            ctx.lineTo(24, 22);
+            ctx.lineTo(16, 18);
+            ctx.lineTo(8, 22);
+            ctx.closePath();
+            ctx.fillStyle = "#D4AF37";
+            ctx.fill();
+
+            // 设置为favicon
+            const link = document.createElement("link");
+            link.rel = "icon";
+            link.type = "image/png";
+            link.href = canvas.toDataURL("image/png");
+            document.head.appendChild(link);
+        }
+        window.addEventListener("load", createFavicon);
+    </script>
+
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-map-marked-alt text-secondary text-2xl mr-2"></i>
+                    <h1 class="text-xl font-serif font-bold">中国方言文化地图</h1>
+                </div>
+                <nav class="nav-links hidden md:flex">
+                    <a href="#home" class="nav-link">首页</a>
+                    <a href="#map-section" class="nav-link">方言地图</a>
+                    <a href="#statistics" class="nav-link">数据统计</a>
+                    <a href="#about" class="nav-link">关于项目</a>
+                </nav>
+                <button class="mobile-menu-btn md:hidden">
+            <i class="fas fa-bars"></i>
+          </button>
+            </div>
+            <!-- 移动端移动端移动端菜单 -->
+            <div class="mobile-menu hidden md:hidden absolute left-0 right-0 bg-primary mt-2 roundedborder-t border-secondary/30 shadowshadow-lg z-50 transition-all duration-300 ease-in-out">
+                <div class="container mx-auto px-4 py-3">
+                    <a href="#home" class="block py-2 px-4 hover:bg-primary/80 rounded transition-colors">首页</a
+            >
+            <a
+              href="#map-section"
+              class="block py-2 px-4 hover:bg-primary/80 rounded transition-colors"
+              >方言地图</a
+            >
+            <a
+              href="#statistics"
+              class="block py-2 px-4 hover:bg-primary/80 rounded transition-colors"
+              >数据统计</a
+            >
+            <a
+              href="#about"
+              class="block py-2 px-4 hover:bg-primary/80 rounded transition-colors"
+              >关于项目</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero区域 -->
+    <section id="home" class="hero-section">
+      <div class="hero-decoration top-left"></div>
+      <div class="hero-decoration bottom-right"></div>
+      <div class="hero-content">
+        <h2 class="hero-title text-gradient hover-lift">
+          探索中国方言的丰富多样性
+        </h2>
+        <p class="hero-description text-shadow">
+          中国方言是中华文化的重要组成部分，承载着各地的历史记忆与文化特色。
+          本项目致力于收集、整理和展示中国各地方言，让更多人了解和传承这份珍贵的文化遗产。
+          从北到南，从东到西，每一种方言都讲述着独特的地域故事。
+        </p>
+        <div class="hero-cta">
+          <a
+            href="#map-section"
+            class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-md transition-all transform hover:scale-105 hover:shadow-lg"
+          >
+            开始探索 <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+                </div>
+            </div>
+            </section>
+
+            <div class="container mx-auto max-w-7xl py-8">
+                <!-- 主要内容区域 -->
+                <section id="map-section" class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-primary mb-8 text-center">
+                        方言采集点分布
+                        <div class="w-20 h-1 bg-secondary mx-auto mt-3"></div>
+                    </h2>
+
+                    <div class="layout-container flex flex-col md:flex-row gap-6 lg:gap-8">
+                        <!-- 左侧列表 -->
+                        <div class="list-container traditional-container p-5 md:w-1/3 lg:w-1/4">
+                            <h2 class="text-xl font-semibold mb-5 flex items-center text-dark">
+                                <i class="fas fa-map-pin mr-2 text-primary"></i> 方言采集点列表
+                                <span class="ml-2 text-sm bg-primary/10 text-primary px-2 py-0.5 rounded-full" id="totalCount">
+                加载中...
+              </span>
+                            </h2>
+
+                            <!-- 搜索框 -->
+                            <div class="search-container mb-5">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" class="search-input" placeholder="搜索地点、内容或采集人..." id="searchInput" />
+                            </div>
+
+                            <div class="space-y-3" id="dialectList">
+                                <div class="loading">
+                                    <i class="fas fa-circle-notch fa-spin"></i>
+                                    <p>加载数据中...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 右侧地图 -->
+                        <div class="map-container traditional-container md:w-2/3 lg:w-3/4" id="map">
+                            <div class="loading absolute inset-0 bg-white/70 z-10 flex flex-col items-center justify-center" id="mapLoading">
+                                <i class="fas fa-globe-asia fa-spin text-3xl text-primary mb-3"></i>
+                                <p>地图加载中...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 统计图表区域 -->
+                <section id="statistics" class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-primary mb-8 text-center">
+                        方言分布统计
+                        <div class="w-20 h-1 bg-secondary mx-auto mt-3"></div>
+                    </h2>
+
+                    <div class="charts-container mt-8">
+                        <div class="chart-wrapper traditional-container p-5">
+                            <h3 class="chart-title">各省份方言采集点数量（柱状图）</h3>
+                            <canvas id="provinceBarChart"></canvas>
+                        </div>
+                        <div class="chart-wrapper traditional-container p-5">
+                            <h3 class="chart-title">各省份方言采集点占比（饼图）</h3>
+                            <canvas id="provincePieChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 关于项目 -->
+                <section id="about" class="traditional-container p-6 mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-primary mb-4">
+                        关于本项目
+                    </h2>
+                    <p class="mb-4">
+                        中国方言文化地图项目旨在收集和展示中国各地的方言资源，促进方言文化的保护与传承。方言是地域文化的活化石，承载着丰富的历史信息和文化内涵。
+                    </p>
+                    <p class="mb-4">
+                        本项目通过地图可视化的方式，直观展示各地方言的分布情况，并提供方言录音、文本记录等资源，为方言研究和保护提供支持。
+                    </p>
+                    <p class="mb-6">
+                        方言不仅是交流工具，更是文化认同的载体。随着社会发展，许多地方方言面临消失的风险，记录和保护这些语言瑰宝具有重要意义。
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <i class="fas fa-info-circle mr-2"></i> 项目详情
+                        </a>
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <i class="fas fa-file-alt mr-2"></i> 研究论文
+                        </a>
+                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                            <i class="fas fa-hand-holding-heart mr-2"></i> 支持我们
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 音频播放器模板 -->
+            <template id="audioPlayerTemplate">
+      <div class="audio-player mt-3">
+        <div class="audio-progress"></div>
+        <div class="audio-loading">
+          <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+      </div>
+      <div class="flex justify-between items-center mt-2">
+        <span class="text-sm text-gray-600 audio-time">0:00</span>
+        <button
+          class="audio-control bg-primary hover:bg-primary/90 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+        >
+          <i class="fas fa-play"></i>
+        </button>
+      </div>
+    </template>
+
+            <!-- 页脚 -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="footer-section">
+                            <h3 class="footer-title">中国方言文化地图</h3>
+                            <p class="text-sm text-gray-300">
+                                致力于方言文化的保护、传承与传播，让更多人了解和喜爱中国丰富的方言文化。
+                            </p>
+                        </div>
+
+                        <div class="footer-section">
+                            <h3 class="footer-title">快速链接</h3>
+                            <ul class="footer-links">
+                                <li><a href="#home">首页</a></li>
+                                <li><a href="#map-section">方言地图</a></li>
+                                <li><a href="#statistics">数据统计</a></li>
+                                <li><a href="#about">关于项目</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-section">
+                            <h3 class="footer-title">相关资源</h3>
+                            <ul class="footer-links">
+                                <li>
+                                    <a href="https://github.com/164321595/DialectMap/tree/Web/Audio">音频资源库</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/164321595/DialectMap"
+                  >方言项目介绍</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="footer-title">联系我们</h3>
+            <ul class="footer-links">
+              <li></li>
+              <li>
+                <a href="#"><i class="fas fa-qq mr-2"></i> +QQ 164321595 </a>
+                                </li>
+                                <li class="flex space-x-4 mt-4"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="copyright">
+                        &copy; 2025 中国方言文化地图 版权所有 | 保护方言文化，传承中华文明
+                    </div>
+                </div>
+            </footer>
+
+            <script>
+                // 全局变量
+                let dialectData = [];
+                let map = null;
+                let markers = [];
+                let activeAudio = null;
+                let activeItemId = null;
+                let barChart = null;
+                let pieChart = null;
+
+                // 初始化
+                document.addEventListener("DOMContentLoaded", function() {
+                    loadDialectData();
+                    initSearch();
+                    setupScrollAnimations();
+                    setupMobileMenu();
+                });
+
+                // 移动端菜单设置
+                function setupMobileMenu() {
+                    const menuBtn = document.querySelector(".mobile-menu-btn");
+                    const mobileMenu = document.querySelector(".mobile-menu");
+                    const menuIcon = menuBtn.querySelector("i");
+
+                    if (menuBtn && mobileMenu) {
+                        menuBtn.addEventListener("click", () => {
+                            // 切换菜单显示状态
+                            mobileMenu.classList.toggle("hidden");
+
+                            // 切换图标（汉堡菜单/关闭）
+                            if (mobileMenu.classList.contains("hidden")) {
+                                menuIcon.classList.remove("fa-times");
+                                menuIcon.classList.add("fa-bars");
+                            } else {
+                                menuIcon.classList.remove("fa-bars");
+                                menuIcon.classList.add("fa-times");
+                            }
+                        });
+
+                        // 点击菜单项后关闭菜单
+                        const menuItems = mobileMenu.querySelectorAll("a");
+                        menuItems.forEach((item) => {
+                            item.addEventListener("click", () => {
+                                mobileMenu.classList.add("hidden");
+                                menuIcon.classList.remove("fa-times");
+                                menuIcon.classList.add("fa-bars");
+                            });
+                        });
+                    }
+                }
+
+                // 从JSON文件加载数据
+                function loadDialectData() {
+                    fetch("dialect_data.json")
+                        .then((response) => {
+                            if (!response.ok) throw new Error("数据加载失败");
+                            return response.json();
+                        })
+                        .then((data) => {
+                            // 处理数据，确保颜色格式正确
+                            dialectData = data.map((item) => {
+                                let color = item.color;
+                                // 使用符合主题的默认颜色
+                                if (!color || !color.startsWith("#") || color.length < 6) {
+                                    console.warn(
+                                        `ID为${item.id}的条目颜色格式不正确，使用默认红色`
+                                    );
+                                    color = "#9C2C1A";
+                                }
+
+                                return {
+                                    ...item,
+                                    color: color,
+                                    audio: {...item.audio,
+                                        content: item.content
+                                    },
+                                };
+                            });
+
+                            renderDialectList();
+                            document.getElementById(
+                                "totalCount"
+                            ).textContent = `${dialectData.length} 个点`;
+                            initMap();
+                            generateProvinceStatistics();
+                        })
+                        .catch((error) => {
+                            console.error("数据加载错误:", error);
+                            document.getElementById("dialectList").innerHTML = `
+              <div class="text-center text-primary p-6">
+                <i class="fas fa-exclamation-circle mr-2"></i>数据加载失败
+                <p class="mt-2 text-sm">请检查数据文件是否存在或格式是否正确</p>
+              </div>
+            `;
+                            document.getElementById("mapLoading").innerHTML = `
+              <div class="text-center text-primary">
+                <i class="fas fa-exclamation-circle mr-2"></i>地图加载失败
+              </div>
+            `;
+                        });
+                }
+
+                // 渲染左侧列表
+                function renderDialectList(filteredData = null) {
+                    const dialectList = document.getElementById("dialectList");
+                    const dataToRender = filteredData || dialectData;
+
+                    if (dataToRender.length === 0) {
+                        dialectList.innerHTML = `
+            <div class="text-center text-tertiary p-6">
+              <i class="fas fa-search mr-2"></i>未找到匹配的数据
+            </div>
+          `;
+                        return;
+                    }
+
+                    dialectList.innerHTML = "";
+                    dataToRender.forEach((item, index) => {
+                                const listItem = document.createElement("div");
+                                listItem.className = `dialect-item stagger-item ${
+            item.id === activeItemId ? "active" : ""
+          }`;
+                                listItem.style.borderLeftColor = item.color;
+                                listItem.style.animationDelay = `${index * 0.05}s`;
+
+                                listItem.innerHTML = `
+            <h3 class="location-title">
+              <span class="location-badge" style="background-color: ${
+                item.color
+              }"></span>
+              ${item.location}
+            </h3>
+            <p class="collector-info">
+              <i class="fas fa-user-circle"></i>
+              采集人: ${item.collector || "未知"}
+            </p>
+            <p class="content-text">${item.content || "无内容"}</p>
+            ${
+              item.audio?.name
+                ? `<p class="text-xs text-tertiary mt-1">音频: ${item.audio.name}</p>`
+                : ""
+            }
+            ${
+              item.audio?.url
+                ? '<span class="audio-tag text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded"><i class="fas fa-volume-up mr-1"></i>有音频</span>'
+                : '<span class="audio-tag text-xs bg-gray-100 text-gray-800 px-2 py-0.5 rounded"><i class="fas fa-volume-off mr-1"></i>无音频</span>'
+            }
+          `;
+          listItem.dataset.id = item.id;
+          dialectList.appendChild(listItem);
+
+          // 点击列表项定位到地图
+          listItem.addEventListener("click", () => {
+            // 添加点击反馈动画
+            listItem.style.transform = "scale(0.98)";
+            setTimeout(() => (listItem.style.transform = ""), 150);
+
+            document
+              .querySelectorAll(".dialect-item")
+              .forEach((el) => el.classList.remove("active"));
+            listItem.classList.add("active");
+            activeItemId = item.id;
+
+            const targetPoint = dialectData.find((d) => d.id === item.id);
+            if (targetPoint && window.map) {
+              // 平滑移动到目标点
+              window.map.setZoomAndCenter(
+                12,
+                [targetPoint.longitude, targetPoint.latitude],
+                true
+              );
+
+              // 高亮显示对应标记
+              const marker = window.markers.find(
+                (m) => m.getExtData().id === item.id
+              );
+              if (marker) {
+                marker.emit("click", { target: marker });
+
+                // 添加标记点动画
+                const markerDom = marker.getContent();
+                markerDom.classList.add("marker-bounce");
+                setTimeout(
+                  () => markerDom.classList.remove("marker-bounce"),
+                  500
+                );
+              }
+            }
+          });
+        });
+      }
+
+      // 初始化搜索功能
+      function initSearch() {
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", (e) => {
+          const keyword = e.target.value.trim().toLowerCase();
+          if (!keyword) {
+            renderDialectList();
+            return;
+          }
+          const filtered = dialectData.filter(
+            (item) =>
+              item.location.toLowerCase().includes(keyword) ||
+              (item.content && item.content.toLowerCase().includes(keyword)) ||
+              (item.collector &&
+                item.collector.toLowerCase().includes(keyword)) ||
+              (item.audio?.name &&
+                item.audio.name.toLowerCase().includes(keyword))
+          );
+          renderDialectList(filtered);
+        });
+
+        // 添加搜索框焦点动画
+        searchInput.addEventListener("focus", () => {
+          searchInput.parentElement.classList.add("scale-[1.01]");
+        });
+        searchInput.addEventListener("blur", () => {
+          searchInput.parentElement.classList.remove("scale-[1.01]");
+        });
+      }
+
+      // 初始化地图
+      function initMap() {
+        AMapLoader.load({
+          key: "d17c17f8f712c81a7e4241aff4faa7b0",
+          plugins: [
+            "AMap.Marker",
+            "AMap.InfoWindow",
+            "AMap.ToolBar",
+            "AMap.Scale",
+          ],
+        })
+          .then((AMap) => {
+            const center = calculateMapCenter();
+            window.map = new AMap.Map("map", {
+              zoom: 5,
+              center: center,
+              viewMode: "2D",
+              resizeEnable: true,
+              zoomEnable: true,
+              dragEnable: true,
+              animateEnable: true,
+            });
+
+            // 添加地图控件
+            window.map.addControl(
+              new AMap.ToolBar({
+                position: "RB",
+                offset: new AMap.Pixel(15, 15),
+                showZoomNum: true,
+                showPosition: true,
+              })
+            );
+            window.map.addControl(
+              new AMap.Scale({
+                position: "RB",
+                offset: new AMap.Pixel(15, 80),
+              })
+            );
+
+            // 隐藏加载动画
+            document.getElementById("mapLoading").style.display = "none";
+
+            // 标记点尺寸设置
+            const normalSize = 14; // 正常状态尺寸
+            const hoverSize = 18; // 悬停状态尺寸
+
+            // 创建标记点
+            window.markers = [];
+            dialectData.forEach((item, index) => {
+              // 创建正常状态的标记点DOM元素
+              const normalMarker = document.createElement("div");
+              normalMarker.style.width = `${normalSize}px`;
+              normalMarker.style.height = `${normalSize}px`;
+              normalMarker.style.borderRadius = "50%";
+              normalMarker.style.backgroundColor = item.color;
+              normalMarker.style.border = "2px solid white";
+              normalMarker.style.boxShadow = "0 2px 6px rgba(0,0,0,0.25)";
+              normalMarker.style.transition = "all 0.2s ease";
+              normalMarker.style.opacity = "0";
+
+              // 创建悬停状态的标记点DOM元素
+              const hoverMarker = document.createElement("div");
+              hoverMarker.style.width = `${hoverSize}px`;
+              hoverMarker.style.height = `${hoverSize}px`;
+              hoverMarker.style.borderRadius = "50%";
+              hoverMarker.style.backgroundColor = item.color;
+              hoverMarker.style.border = "2px solid white";
+              hoverMarker.style.boxShadow = "0 2px 10px rgba(0,0,0,0.35)";
+              hoverMarker.style.transition = "all 0.2s ease";
+
+              // 计算精确偏移量
+              const normalOffset = new AMap.Pixel(
+                -normalSize / 2,
+                -normalSize / 2
+              );
+              const hoverOffset = new AMap.Pixel(
+                -hoverSize / 2,
+                -hoverSize / 2
+              );
+
+              const marker = new AMap.Marker({
+                position: [item.longitude, item.latitude],
+                content: normalMarker,
+                offset: normalOffset,
+                extData: item,
+                anchor: "center",
+              });
+
+              // 悬停效果
+              marker.on("mouseover", () => {
+                marker.setContent(hoverMarker);
+                marker.setOffset(hoverOffset);
+              });
+              marker.on("mouseout", () => {
+                marker.setContent(normalMarker);
+                marker.setOffset(normalOffset);
+              });
+
+              // 点击显示信息窗口
+              marker.on("click", (e) => {
+                const data = e.target.getExtData();
+                activeItemId = data.id;
+
+                document.querySelectorAll(".dialect-item").forEach((el) => {
+                  el.classList.toggle("active", el.dataset.id === data.id);
+                });
+
+                const infoWindow = new AMap.InfoWindow({
+                  content: createPopupContent(data),
+                  offset: new AMap.Pixel(0, -normalSize / 2 - 10),
+                  autoMove: true,
+                  animateEnable: true,
+                });
+                infoWindow.open(window.map, e.target.getPosition());
+
+                setTimeout(() => initAudioPlayer(data.id), 100);
+              });
+
+              window.map.add(marker);
+              window.markers.push(marker);
+
+              // 添加标记点渐入动画
+              setTimeout(() => {
+                normalMarker.style.opacity = "1";
+                normalMarker.style.transform = "scale(1)";
+              }, 100 + index * 50);
+            });
+
+            // 监听地图缩放结束事件，重新校准标记点位置
+            window.map.on("zoomend", function () {
+              window.markers.forEach((marker) => {
+                marker.setPosition(marker.getPosition());
+              });
+            });
+          })
+          .catch((e) => {
+            console.error("地图加载失败:", e);
+            document.getElementById("mapLoading").innerHTML = `
+                <div class="text-center text-primary">
+                  <i class="fas fa-exclamation-circle mr-2"></i>地图加载失败
+                </div>
+              `;
+          });
+      }
+
+      // 计算地图中心
+      function calculateMapCenter() {
+        if (dialectData.length === 0) return [104.195397, 35.86166];
+        const sumLng = dialectData.reduce(
+          (sum, item) => sum + item.longitude,
+          0
+        );
+        const sumLat = dialectData.reduce(
+          (sum, item) => sum + item.latitude,
+          0
+        );
+        return [sumLng / dialectData.length, sumLat / dialectData.length];
+      }
+
+      // 创建信息框内容
+      function createPopupContent(data) {
+        return `
+          <div class="marker-popup">
+            <h3 class="font-bold">${data.location}</h3>
+            <p class="text-sm text-tertiary">采集人: ${
+              data.collector || "未知"
+            }</p>
+            <p class="text-gray-700">${data.content || "无内容"}</p>
+            ${
+              data.audio?.name
+                ? `<p class="text-xs text-tertiary mt-1">音频: ${data.audio.name}</p>`
+                : ""
+            }
+            <div id="audio-player-${data.id}"></div>
+            ${
+              !data.audio?.url
+                ? '<p class="text-primary text-sm mt-2">无音频数据</p>'
+                : ""
+            }
+          </div>
+        `;
+      }
+
+      // 初始化音频播放器
+      function initAudioPlayer(id) {
+        const container = document.getElementById(`audio-player-${id}`);
+        if (!container) return;
+
+        const template = document.getElementById("audioPlayerTemplate");
+        const clone = template.content.cloneNode(true);
+        container.appendChild(clone);
+
+        const data = dialectData.find((d) => d.id === id);
+        if (!data) return;
+
+        const audio = new Audio(data.audio?.url || "");
+        const playBtn = container.querySelector(".audio-control");
+        const progressBar = container.querySelector(".audio-progress");
+        const timeDisplay = container.querySelector(".audio-time");
+        const playIcon = playBtn.querySelector("i");
+        const loadingIndicator = container.querySelector(".audio-loading");
+
+        // 暂停其他音频
+        if (activeAudio && activeAudio !== audio) {
+          activeAudio.pause();
+          document.querySelectorAll(".audio-control i").forEach((icon) => {
+            icon.classList.remove("fa-pause");
+            icon.classList.add("fa-play");
+          });
+        }
+        activeAudio = audio;
+
+        // 加载状态
+        audio.addEventListener("loadstart", () =>
+          loadingIndicator.classList.add("active")
+        );
+        audio.addEventListener("canplay", () =>
+          loadingIndicator.classList.remove("active")
+        );
+        audio.addEventListener("error", () => {
+          loadingIndicator.classList.remove("active");
+          timeDisplay.textContent = "加载失败";
+          timeDisplay.style.color = "#9C2C1A";
+        });
+
+        // 播放控制
+        playBtn.addEventListener("click", () => {
+          playBtn.classList.add("scale-90");
+          setTimeout(() => playBtn.classList.remove("scale-90"), 150);
+
+          if (audio.paused) {
+            audio.play().catch((err) => {
+              console.error("播放失败:", err);
+              loadingIndicator.classList.remove("active");
+            });
+            playIcon.classList.remove("fa-play");
+            playIcon.classList.add("fa-pause");
+          } else {
+            audio.pause();
+            playIcon.classList.remove("fa-pause");
+            playIcon.classList.add("fa-play");
+          }
+        });
+
+        // 进度更新
+        audio.addEventListener("timeupdate", () => {
+          if (audio.duration) {
+            progressBar.style.width = `${
+              (audio.currentTime / audio.duration) * 100
+            }%`;
+            const minutes = Math.floor(audio.currentTime / 60);
+            const seconds = Math.floor(audio.currentTime % 60);
+            timeDisplay.textContent = `${minutes}:${
+              seconds < 10 ? "0" + seconds : seconds
+            }`;
+          }
+        });
+
+        // 播放结束
+        audio.addEventListener("ended", () => {
+          playIcon.classList.remove("fa-pause");
+          playIcon.classList.add("fa-play");
+        });
+
+        // 进度条点击
+        progressBar.parentElement.addEventListener("click", (e) => {
+          const rect = progressBar.parentElement.getBoundingClientRect();
+          audio.currentTime =
+            ((e.clientX - rect.left) / rect.width) * audio.duration;
+        });
+      }
+
+      // 生成符合主题的颜色
+      function getTraditionalColors(count) {
+        // 传统中国色盘 - 符合方言文化主题
+        const traditionalPalette = [
+          "#9C2C1A",
+          "#C75146",
+          "#D4AF37",
+          "#E8C872",
+          "#5C4033",
+          "#8B5A2B",
+          "#B8860B",
+          "#CD5C5C",
+        ];
+
+        // 如果需要的颜色超过色盘数量，则循环使用
+        const colors = [];
+        for (let i = 0; i < count; i++) {
+          colors.push(traditionalPalette[i % traditionalPalette.length]);
+        }
+        return colors;
+      }
+
+      // 生成省份统计图表
+      function generateProvinceStatistics() {
+        // 1. 统计各省份的方言点数量
+        const provinceData = {};
+        dialectData.forEach((item) => {
+          const province = item.province || "未知省份";
+          provinceData[province] = (provinceData[province] || 0) + 1;
+        });
+
+        // 2. 准备图表数据
+        const provinces = Object.keys(provinceData);
+        const counts = provinces.map((province) => provinceData[province]);
+
+        // 3. 生成符合主题的颜色
+        const colors = getTraditionalColors(provinces.length);
+
+        // 4. 创建柱状图
+        const barCtx = document
+          .getElementById("provinceBarChart")
+          .getContext("2d");
+        barChart = new Chart(barCtx, {
+          type: "bar",
+          data: {
+            labels: provinces,
+            datasets: [
+              {
+                label: "方言采集点数量",
+                data: counts,
+                backgroundColor: colors,
+                borderColor: colors.map((color) =>
+                  color.replace(")", ", 0.8)").replace("rgb", "rgba")
+                ),
+                borderWidth: 1,
+                borderRadius: 6,
+                barPercentage: 0.6,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { beginAtZero: true, ticks: { precision: 0 } },
+              x: { ticks: { maxRotation: 45, minRotation: 45 } },
+            },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: "rgba(45, 35, 32, 0.9)",
+                titleColor: "#F9F4EF",
+                bodyColor: "#F9F4EF",
+                borderColor: "#5C4033",
+                borderWidth: 1,
+                padding: 12,
+                boxPadding: 6,
+                usePointStyle: true,
+                callbacks: {
+                  label: function (context) {
+                    return `数量: ${context.raw}`;
+                  },
+                },
+              },
+            },
+            animation: {
+              duration: 2000,
+              easing: "easeOutQuart",
+            },
+          },
+        });
+
+        // 5. 创建饼图
+        const pieCtx = document
+          .getElementById("provincePieChart")
+          .getContext("2d");
+        pieChart = new Chart(pieCtx, {
+          type: "pie",
+          data: {
+            labels: provinces,
+            datasets: [
+              {
+                data: counts,
+                backgroundColor: colors,
+                borderColor: "#F9F4EF",
+                borderWidth: 2,
+                hoverOffset: 10,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    const value = context.raw;
+                    const total = context.dataset.data.reduce(
+                      (a, b) => a + b,
+                      0
+                    );
+                    const percentage = Math.round((value / total) * 100);
+                    return `${context.label}: ${value} (${percentage}%)`;
+                  },
+                },
+                backgroundColor: "rgba(45, 35, 32, 0.9)",
+                titleColor: "#F9F4EF",
+                bodyColor: "#F9F4EF",
+                borderColor: "#5C4033",
+                borderWidth: 1,
+                padding: 12,
+                boxPadding: 6,
+              },
+              legend: {
+                position: "right",
+                labels: { boxWidth: 15, padding: 10, font: { size: 11 } },
+              },
+            },
+            animation: {
+              animateRotate: true,
+              animateScale: true,
+              duration: 2000,
+              easing: "easeOutQuart",
+            },
+          },
+        });
+      }
+
+      // 设置滚动动画
+      function setupScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("fade-in");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        // 观察所有需要动画的元素
+        document
+          .querySelectorAll(".traditional-container, section > h2")
+          .forEach((el) => {
+            observer.observe(el);
+          });
+      }
+            </script>
+</body>
+
+</html>
