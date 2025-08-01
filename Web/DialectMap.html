@@ -53,6 +53,8 @@
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            padding-top: 64px;
+            /* 为固定导航栏预留空间 */
         }
         /* 自定义容器样式 - 符合传统主题 */
         
@@ -347,8 +349,23 @@
             color: white;
             padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 100;
+            position: fixed;
+            /* 固定在顶部 */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            /* 确保在其他内容之上 */
+            transition: all 0.3s ease;
+            /* 添加滚动效果过渡 */
+        }
+        /* 滚动时导航栏变化 */
+        
+        .site-header.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            background-color: rgba(156, 44, 26, 0.95);
+            backdrop-filter: blur(5px);
         }
         
         .site-header::after {
@@ -387,6 +404,15 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        /* 当前页面导航高亮 */
+        
+        .nav-link.active {
+            color: white;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
         /* Hero区域样式 */
         
         .hero-section {
@@ -394,7 +420,6 @@
             background-image: linear-gradient( rgba(212, 175, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
             background-size: 20px 20px;
             padding: 8rem 0;
-            /* 增加高度 */
             position: relative;
             overflow: hidden;
         }
@@ -413,7 +438,6 @@
         .hero-title {
             font-family: "Noto Serif SC", serif;
             font-size: 3.5rem;
-            /* 加大标题 */
             font-weight: 700;
             color: #9c2c1a;
             margin-bottom: 1.5rem;
@@ -439,7 +463,6 @@
         
         .hero-description {
             font-size: 1.3rem;
-            /* 加大描述文字 */
             color: #5c4033;
             line-height: 1.8;
             margin-bottom: 2.5rem;
@@ -454,7 +477,7 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%239C2C1A' fill-opacity='0.05' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%239C2C1A' fill-opacity='0.05' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/svg%3E");
             opacity: 0.7;
             z-index: 1;
         }
@@ -607,6 +630,13 @@
             .hero-description {
                 font-size: 1.1rem;
             }
+            /* 移动端固定导航栏适配 */
+            .site-header {
+                padding: 0.75rem 0;
+            }
+            body {
+                padding-top: 56px;
+            }
         }
         
         @media (min-width: 769px) {
@@ -722,24 +752,20 @@
         @media (max-width: 768px) {
             /* 移动端将控件移至右上角 */
             .amap-toolbar {
-                /* 右上角布局 - 缩放控件 */
-                top: 30px !important;
+                top: 80px !important;
+                /* 为固定导航栏调整控件位置 */
                 right: 15px !important;
-                /* 距离右侧15px */
                 bottom: auto !important;
                 left: auto !important;
             }
             .amap-scale {
-                /* 右上角布局 - 比例尺，位于缩放控件下方 */
-                top: 200px !important;
+                top: 250px !important;
+                /* 为固定导航栏调整控件位置 */
                 right: 15px !important;
-                /* 与缩放控件右对齐 */
                 bottom: auto !important;
                 left: auto !important;
                 display: block !important;
-                /* 强制显示比例尺 */
             }
-            /* 保持控件大小，确保触控友好 */
             .amap-toolbar .amap-zoomcontrol {
                 width: 44px !important;
             }
@@ -788,7 +814,7 @@
         window.addEventListener("load", createFavicon);
     </script>
 
-    <!-- 页眉 -->
+    <!-- 页眉 - 固定导航栏 -->
     <header class="site-header">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
@@ -797,7 +823,7 @@
                     <h1 class="text-xl font-serif font-bold">中国方言文化地图</h1>
                 </div>
                 <nav class="nav-links hidden md:flex">
-                    <a href="#home" class="nav-link">首页</a>
+                    <a href="#home" class="nav-link active">首页</a>
                     <a href="#map-section" class="nav-link">方言地图</a>
                     <a href="#statistics" class="nav-link">数据统计</a>
                     <a href="#about" class="nav-link">关于项目</a>
@@ -806,8 +832,8 @@
             <i class="fas fa-bars"></i>
           </button>
             </div>
-            <!-- 移动端移动端移动端菜单 -->
-            <div class="mobile-menu hidden md:hidden absolute left-0 right-0 bg-primary mt-2 roundedborder-t border-secondary/30 shadowshadow-lg z-50 transition-all duration-300 ease-in-out">
+            <!-- 移动端菜单 -->
+            <div class="mobile-menu hidden md:hidden absolute left-0 right-0 bg-primary mt-2 rounded border-t border-secondary/30 shadow-lg z-50 transition-all duration-300 ease-in-out">
                 <div class="container mx-auto px-4 py-3">
                     <a href="#home" class="block py-2 px-4 hover:bg-primary/80 rounded transition-colors">首页</a
             >
@@ -931,11 +957,8 @@
                         方言不仅是交流工具，更是文化认同的载体。随着社会发展，许多地方方言面临消失的风险，记录和保护这些语言瑰宝具有重要意义。
                     </p>
                     <div class="flex flex-wrap gap-4 mt-6">
-                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
+                        <a href="https://github.com/164321595/DialectMap/tree/Introduction" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
                             <i class="fas fa-info-circle mr-2"></i> 项目详情
-                        </a>
-                        <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
-                            <i class="fas fa-file-alt mr-2"></i> 研究论文
                         </a>
                         <a href="#" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors">
                             <i class="fas fa-hand-holding-heart mr-2"></i> 支持我们
@@ -987,11 +1010,13 @@
                             <h3 class="footer-title">相关资源</h3>
                             <ul class="footer-links">
                                 <li>
-                                    <a href="https://github.com/164321595/DialectMap/tree/Web/Audio">音频资源库</a
+                                    <a href="https://github.com/164321595/DialectMap/Audio" target="_blank">音频资源库</a
                 >
               </li>
               <li>
-                <a href="https://github.com/164321595/DialectMap"
+                <a
+                  href="https://github.com/164321595/DialectMap/tree/Introduction"
+                  target="_blank"
                   >方言项目介绍</a
                 >
               </li>
@@ -1003,7 +1028,9 @@
             <ul class="footer-links">
               <li></li>
               <li>
-                <a href="#"><i class="fas fa-qq mr-2"></i> +QQ 164321595 </a>
+                <a href="#"
+                  ><i class="fas fa-envelope mr-2"></i> +QQ 164321595
+                </a>
                                 </li>
                                 <li class="flex space-x-4 mt-4"></li>
                             </ul>
@@ -1032,7 +1059,49 @@
                     initSearch();
                     setupScrollAnimations();
                     setupMobileMenu();
+                    setupStickyHeader(); // 初始化固定导航栏效果
+                    setupNavHighlight(); // 初始化导航高亮
                 });
+
+                // 设置固定导航栏滚动效果
+                function setupStickyHeader() {
+                    const header = document.querySelector(".site-header");
+                    window.addEventListener("scroll", () => {
+                        if (window.scrollY > 50) {
+                            header.classList.add("scrolled");
+                        } else {
+                            header.classList.remove("scrolled");
+                        }
+                    });
+                }
+
+                // 设置导航栏当前页面高亮
+                function setupNavHighlight() {
+                    const sections = document.querySelectorAll("section[id]");
+                    const navLinks = document.querySelectorAll(".nav-link");
+
+                    function highlightNav() {
+                        const scrollY = window.pageYOffset;
+
+                        sections.forEach((section) => {
+                            const sectionHeight = section.offsetHeight;
+                            const sectionTop = section.offsetTop - 100;
+                            const sectionId = section.getAttribute("id");
+
+                            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                                navLinks.forEach((link) => {
+                                    link.classList.remove("active");
+                                    if (link.getAttribute("href") === `#${sectionId}`) {
+                                        link.classList.add("active");
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                    window.addEventListener("scroll", highlightNav);
+                    highlightNav(); // 初始调用一次
+                }
 
                 // 移动端菜单设置
                 function setupMobileMenu() {
@@ -1345,17 +1414,22 @@
                   el.classList.toggle("active", el.dataset.id === data.id);
                 });
 
+                // 调整信息框的配置
                 const infoWindow = new AMap.InfoWindow({
                   content: createPopupContent(data),
                   offset: new AMap.Pixel(0, -normalSize / 2 - 10),
                   autoMove: true,
                   animateEnable: true,
+                  // 新增配置项
+                  size: new AMap.Size(300, 200), // 设置信息框的宽高
+                  closeWhenClickMap: true, // 点击地图关闭信息框
+                  isCustom: true, // 使用自定义样式
+                  anchor: "bottom-center", // 信息框的锚点位置
                 });
                 infoWindow.open(window.map, e.target.getPosition());
 
                 setTimeout(() => initAudioPlayer(data.id), 100);
               });
-
               window.map.add(marker);
               window.markers.push(marker);
 
