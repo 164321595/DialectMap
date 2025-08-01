@@ -1549,16 +1549,34 @@
         activeAudio = audio;
 
         // 加载状态处理 - 修复重复的"icator"
-        audio.addEventListener("loadstart", () => {
-          loadingIndicator.classList.add("active");
-        });
-        audio.addEventListener("canplay", () => {
-          loadingIndicator.classList.remove("active");
-        });
         audio.addEventListener("error", () => {
           loadingIndicator.classList.remove("active");
-          timeDisplay.textContent = "加载失败";
+          // 更详细的错误信息
+          let errorMsg = "音频加载失败";
+          switch (audio.error.code) {
+            case 1:
+              errorMsg = "音频加载被中止";
+              break;
+            case 2:
+              errorMsg = "音频格式不支持";
+              break;
+            case 3:
+              errorMsg = "音频解码失败";
+              break;
+            case 4:
+              errorMsg = "音频资源未找到";
+              break;
+          }
+          timeDisplay.textContent = errorMsg;
           timeDisplay.style.color = "#9C2C1A";
+
+          // 提供下载链接
+          const downloadLink = document.createElement("a");
+          downloadLink.href = audio.src;
+          downloadLink.textContent = "点击下载音频";
+          downloadLink.className = "text-primary text-sm mt-1 block";
+          downloadLink.download = data.audio?.name + ".mp3";
+          container.appendChild(downloadLink);
         });
 
         // 播放控制 - 修复重复的"Icon"
