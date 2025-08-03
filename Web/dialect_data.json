@@ -1,20 +1,524 @@
 [
   {
     "id": "dialect_1",
-    "location": "福建省周宁县",
+    "location": "福建省漳州东山",
     "province": "福建省",
-    "longitude": 119.3455671296402,
-    "latitude": 27.11023928044784,
+    "longitude": 117.4297,
+    "latitude": 23.7026,
     "color": "#cc5151",
-    "collector": "张伟林",
+    "collector": "陈林祺",
     "audio": {
-      "url": "/Audio/年3天，端午3餐，中秋夜宵，重阳芋头。.mp3",
-      "name": "年3天，端午3餐，中秋夜宵，重阳芋头。"
+      "url": "Audio/《时令鱼谣》.mp3\n",
+      "name": "《时令鱼谣》"
     },
-    "content": "年3天，端午3餐，中秋夜宵，重阳芋头"
+    "content": "一午二红鲨，三鲳四马鲛，五鳖六鲛勤，七小管，八墨铡，九候母人人夸，十是犁头鲨，十一是红，十二是龙虾甲钓白带。"
   },
   {
     "id": "dialect_2",
+    "location": "福建漳州台商投资区",
+    "province": "福建省",
+    "longitude": 117.8276,
+    "latitude": 24.4865,
+    "color": "#cc5151",
+    "collector": "杨雨薇",
+    "audio": {
+      "url": "Audio/立春起北风，雨水白茫茫.mp3",
+      "name": "立春起北风，雨水白茫茫"
+    },
+    "content": "立春起北风，雨水白茫茫"
+  },
+  {
+    "id": "dialect_3",
+    "location": "福建漳州台商投资区",
+    "province": "福建省",
+    "longitude": 117.8276,
+    "latitude": 24.4865,
+    "color": "#cc5151",
+    "collector": "杨雨薇",
+    "audio": {
+      "url": "Audio/小满出大日，恰出无三日.m4a",
+      "name": "小满出大日，恰出无三日"
+    },
+    "content": "小满出大日，恰出无三日"
+  },
+  {
+    "id": "dialect_4",
+    "location": "福建漳州",
+    "province": "福建省",
+    "longitude": 117.6612,
+    "latitude": 24.513,
+    "color": "#cc5151",
+    "collector": "邱青鹏",
+    "audio": {
+      "url": "Audio/谷雨落雨 菜仔胀破肚 立夏东南风 好天釉仔壮.m4a",
+      "name": "谷雨落雨 菜仔胀破肚 立夏东南风 好天釉仔壮"
+    },
+    "content": "谷雨落雨 菜仔胀破肚 立夏东南风 好天釉仔壮"
+  },
+  {
+    "id": "dialect_5",
+    "location": "福建漳州",
+    "province": "福建省",
+    "longitude": 117.6612,
+    "latitude": 24.513,
+    "color": "#cc5151",
+    "collector": "邱青鹏",
+    "audio": {
+      "url": "Audio/立春起北风 雨水白茫范 惊蛰无烘火 寒进五月尾.m4a",
+      "name": "立春起北风 雨水白茫范 惊蛰无烘火 寒进五月尾"
+    },
+    "content": "立春起北风 雨水白茫范 惊蛰无烘火 寒进五月尾"
+  },
+  {
+    "id": "dialect_6",
+    "location": "福建厦门市集美区后溪镇",
+    "province": "福建省",
+    "longitude": 118.0463,
+    "latitude": 24.6345,
+    "color": "#cc5151",
+    "collector": "叶全祺",
+    "audio": {
+      "url": "Audio/立春起北风，雨水白茫茫.m4a",
+      "name": "立春起北风，雨水白茫茫"
+    },
+    "content": "立春起北风，雨水白茫茫"
+  },
+  {
+    "id": "dialect_7",
+    "location": "福建厦门市集美区后溪镇",
+    "province": "福建省",
+    "longitude": 118.0463,
+    "latitude": 24.6345,
+    "color": "#cc5151",
+    "collector": "叶全祺",
+    "audio": {
+      "url": "Audio/清明穿棉衣，一热到秋天.m4a",
+      "name": "清明穿棉衣，一热到秋天"
+    },
+    "content": "清明穿棉衣，一热到秋天"
+  },
+  {
+    "id": "dialect_8",
+    "location": "福建龙岩永定",
+    "province": "福建省",
+    "longitude": 116.732,
+    "latitude": 24.724,
+    "color": "#cc5151",
+    "collector": "赵子龙",
+    "audio": {
+      "url": "Audio/夏至不出蒜，必定散了瓣.m4a",
+      "name": "夏至不出蒜，必定散了瓣"
+    },
+    "content": "夏至不出蒜，必定散了瓣"
+  },
+  {
+    "id": "dialect_9",
+    "location": "福建龙岩永定",
+    "province": "福建省",
+    "longitude": 116.732,
+    "latitude": 24.724,
+    "color": "#cc5151",
+    "collector": "赵子龙",
+    "audio": {
+      "url": "Audio/种瓜得瓜，种豆得豆.m4a",
+      "name": "种瓜得瓜，种豆得豆"
+    },
+    "content": "种瓜得瓜，种豆得豆"
+  },
+  {
+    "id": "dialect_10",
+    "location": "福建泉州",
+    "province": "福建省",
+    "longitude": 118.6759,
+    "latitude": 24.8739,
+    "color": "#cc5151",
+    "collector": "郑天一",
+    "audio": {
+      "url": "Audio/睡醒了今天要去上课.mp3",
+      "name": "睡醒了今天要去上课"
+    },
+    "content": "睡醒了今天要去上课"
+  },
+  {
+    "id": "dialect_11",
+    "location": "福建泉州",
+    "province": "福建省",
+    "longitude": 118.6759,
+    "latitude": 24.8739,
+    "color": "#cc5151",
+    "collector": "郑天一",
+    "audio": {
+      "url": "Audio/我今天吃了牛排，吃饱了就睡.mp3",
+      "name": "我今天吃了牛排，吃饱了就睡"
+    },
+    "content": "我今天吃了牛排，吃饱了就睡"
+  },
+  {
+    "id": "dialect_12",
+    "location": "福建龙岩上杭",
+    "province": "福建省",
+    "longitude": 116.4156,
+    "latitude": 25.0494,
+    "color": "#cc5151",
+    "collector": "袁志华",
+    "audio": {
+      "url": "Audio/春风秋风，日夜平分，过了中秋夜，一夜冷一夜.m4a",
+      "name": "春风秋风，日夜平分，过了中秋夜，一夜冷一夜"
+    },
+    "content": "春风秋风，日夜平分，过了中秋夜，一夜冷一夜"
+  },
+  {
+    "id": "dialect_13",
+    "location": "福建龙岩",
+    "province": "福建省",
+    "longitude": 117.0174,
+    "latitude": 25.0753,
+    "color": "#cc5151",
+    "collector": "卢宗园",
+    "audio": {
+      "url": "Audio/三月三，水落干，种田人唔惊干.mp3",
+      "name": "三月三，水落干，种田人唔惊干"
+    },
+    "content": "三月三，水落干，种田人唔惊干"
+  },
+  {
+    "id": "dialect_14",
+    "location": "福建龙岩",
+    "province": "福建省",
+    "longitude": 117.0174,
+    "latitude": 25.0753,
+    "color": "#cc5151",
+    "collector": "卢宗园",
+    "audio": {
+      "url": "Audio/正月寒死牛，二月寒死囝.mp3",
+      "name": "正月寒死牛，二月寒死囝"
+    },
+    "content": "正月寒死牛，二月寒死囝"
+  },
+  {
+    "id": "dialect_15",
+    "location": "福建莆田市荔城区新度镇",
+    "province": "福建省",
+    "longitude": 119.0206,
+    "latitude": 25.3968,
+    "color": "#cc5151",
+    "collector": "陈宇杰",
+    "audio": {
+      "url": "Audio/吃饭不嚼不知味，读书不想不知意.m4a",
+      "name": "吃饭不嚼不知味，读书不想不知意"
+    },
+    "content": "吃饭不嚼不知味，读书不想不知意"
+  },
+  {
+    "id": "dialect_16",
+    "location": "福建莆田市荔城区新度镇",
+    "province": "福建省",
+    "longitude": 119.0206,
+    "latitude": 25.3968,
+    "color": "#cc5151",
+    "collector": "陈宇杰",
+    "audio": {
+      "url": "Audio/老要常讲，少要常问.m4a",
+      "name": "老要常讲，少要常问"
+    },
+    "content": "老要常讲，少要常问"
+  },
+  {
+    "id": "dialect_17",
+    "location": "贵州黔南罗甸",
+    "province": "贵州省",
+    "longitude": 106.75,
+    "latitude": 25.4256,
+    "color": "#ccb951",
+    "collector": "吴昊",
+    "audio": {
+      "url": "Audio/一年之计在于春，一日之计在于晨.m4a",
+      "name": "一年之计在于春，一日之计在于晨"
+    },
+    "content": "一年之计在于春，一日之计在于晨"
+  },
+  {
+    "id": "dialect_18",
+    "location": "贵州黔南罗甸",
+    "province": "贵州省",
+    "longitude": 106.75,
+    "latitude": 25.4256,
+    "color": "#ccb951",
+    "collector": "吴昊",
+    "audio": {
+      "url": "Audio/雨水有雨庄稼好，大春小春一片宝.m4a",
+      "name": "雨水有雨庄稼好，大春小春一片宝"
+    },
+    "content": "雨水有雨庄稼好，大春小春一片宝"
+  },
+  {
+    "id": "dialect_19",
+    "location": "福建莆田",
+    "province": "福建省",
+    "longitude": 119.0077,
+    "latitude": 25.431,
+    "color": "#cc5151",
+    "collector": "朱熙",
+    "audio": {
+      "url": "Audio/清明吃清明粿，冬至吃汤圆.m4a",
+      "name": "清明吃清明粿，冬至吃汤圆"
+    },
+    "content": "清明吃清明粿，冬至吃汤圆"
+  },
+  {
+    "id": "dialect_20",
+    "location": "福建莆田",
+    "province": "福建省",
+    "longitude": 119.0077,
+    "latitude": 25.431,
+    "color": "#cc5151",
+    "collector": "柳钰舒",
+    "audio": {
+      "url": "Audio/正月花 二月柳 三月冻脚手清明谷雨 寒死老鼠 谷雨前后栽瓜种豆 立秋无雨是空秋....m4a",
+      "name": "正月花 二月柳 三月冻脚手清明谷雨 寒死老鼠 谷雨前后栽瓜种豆 立秋无雨是空秋..."
+    },
+    "content": "正月花 二月柳 三月冻脚手清明谷雨 寒死老鼠 谷雨前后栽瓜种豆 立秋无雨是空秋 影响谷物一半收 春天孩子面 一天十八变 五月南风做大水 六月南风溪无水 六月东风过午 七月西风过午 就有台风狂呼 六月风无工 十二月风找空 乌云入河溪 西北十八个 雷声大 雨点细 雷公先唱歌 有雨也不多 雷鸣未雨水 有雨盛无水"
+  },
+  {
+    "id": "dialect_21",
+    "location": "福建龙岩长汀",
+    "province": "福建省",
+    "longitude": 116.3575,
+    "latitude": 25.8333,
+    "color": "#cc5151",
+    "collector": "饶慧",
+    "audio": {
+      "url": "Audio/冬至不结冰，冬后冻死人.m4a",
+      "name": "冬至不结冰，冬后冻死人"
+    },
+    "content": "冬至不结冰，冬后冻死人"
+  },
+  {
+    "id": "dialect_22",
+    "location": "福建龙岩长汀",
+    "province": "福建省",
+    "longitude": 116.3575,
+    "latitude": 25.8333,
+    "color": "#cc5151",
+    "collector": "饶慧",
+    "audio": {
+      "url": "Audio/燕子低飞要落雨.m4a",
+      "name": "燕子低飞要落雨"
+    },
+    "content": "燕子低飞要落雨"
+  },
+  {
+    "id": "dialect_23",
+    "location": "福建福州",
+    "province": "福建省",
+    "longitude": 119.2965,
+    "latitude": 26.0745,
+    "color": "#cc5151",
+    "collector": "柳钰舒",
+    "audio": {
+      "url": "Audio/手拍锣鼓响连天 端午采莲在街边 一枝蒲艾门前插 竹叶裹粽四角尖.m4a",
+      "name": "手拍锣鼓响连天 端午采莲在街边 一枝蒲艾门前插 竹叶裹粽四角尖"
+    },
+    "content": "手拍锣鼓响连天 端午采莲在街边 一枝蒲艾门前插 竹叶裹粽四角尖"
+  },
+  {
+    "id": "dialect_24",
+    "location": "福建尤溪",
+    "province": "福建省",
+    "longitude": 118.1904,
+    "latitude": 26.1704,
+    "color": "#cc5151",
+    "collector": "纪国一",
+    "audio": {
+      "url": "Audio/会种种一丘，不会种种千丘.m4a",
+      "name": "会种种一丘，不会种种千丘"
+    },
+    "content": "会种种一丘，不会种种千丘"
+  },
+  {
+    "id": "dialect_25",
+    "location": "福建尤溪",
+    "province": "福建省",
+    "longitude": 118.1904,
+    "latitude": 26.1704,
+    "color": "#cc5151",
+    "collector": "纪国一",
+    "audio": {
+      "url": "Audio/头麻见秧，二麻见糠，三麻见霜.m4a",
+      "name": "头麻见秧，二麻见糠，三麻见霜"
+    },
+    "content": "头麻见秧，二麻见糠，三麻见霜"
+  },
+  {
+    "id": "dialect_26",
+    "location": "云南曲靖宣威",
+    "province": "云南省",
+    "longitude": 104.0955,
+    "latitude": 26.2277,
+    "color": "#76cc51",
+    "collector": "高娅婷",
+    "audio": {
+      "url": "Audio/不怕腊月十五淋，就怕腊月十五晴.m4a",
+      "name": "不怕腊月十五淋，就怕腊月十五晴"
+    },
+    "content": "不怕腊月十五淋，就怕腊月十五晴"
+  },
+  {
+    "id": "dialect_27",
+    "location": "云南曲靖宣威",
+    "province": "云南省",
+    "longitude": 104.0955,
+    "latitude": 26.2277,
+    "color": "#76cc51",
+    "collector": "高娅婷",
+    "audio": {
+      "url": "Audio/春前有雨花开早，秋后无霜叶落迟.m4a",
+      "name": "春前有雨花开早，秋后无霜叶落迟"
+    },
+    "content": "春前有雨花开早，秋后无霜叶落迟"
+  },
+  {
+    "id": "dialect_28",
+    "location": "湖南邵阳邵东",
+    "province": "湖南省",
+    "longitude": 111.7443,
+    "latitude": 27.2584,
+    "color": "#51cc96",
+    "collector": "谭培",
+    "audio": {
+      "url": "Audio/清明前，种棉棉，清明后，种豆豆.mp3",
+      "name": "清明前，种棉棉，清明后，种豆豆"
+    },
+    "content": "清明前，种棉棉，清明后，种豆豆"
+  },
+  {
+    "id": "dialect_29",
+    "location": "湖南邵阳邵东",
+    "province": "湖南省",
+    "longitude": 111.7443,
+    "latitude": 27.2584,
+    "color": "#51cc96",
+    "collector": "谭培",
+    "audio": {
+      "url": "Audio/小满不满，芒种不管.mp3",
+      "name": "小满不满，芒种不管"
+    },
+    "content": "小满不满，芒种不管"
+  },
+  {
+    "id": "dialect_30",
+    "location": "江西省樟树市",
+    "province": "江西省",
+    "longitude": 115.5438,
+    "latitude": 28.0559,
+    "color": "#5199cc",
+    "collector": "陈仕杰",
+    "audio": {
+      "url": "Audio/清明前后，种瓜点豆.m4a",
+      "name": "清明前后，种瓜点豆"
+    },
+    "content": "清明前后，种瓜点豆"
+  },
+  {
+    "id": "dialect_31",
+    "location": "江西省樟树市",
+    "province": "江西省",
+    "longitude": 115.5438,
+    "latitude": 28.0559,
+    "color": "#5199cc",
+    "collector": "陈仕杰",
+    "audio": {
+      "url": "Audio/小满不满，芒种不管.m4a",
+      "name": "小满不满，芒种不管"
+    },
+    "content": "小满不满，芒种不管"
+  },
+  {
+    "id": "dialect_32",
+    "location": "陕西安康汉滨区",
+    "province": "陕西省",
+    "longitude": 109.0293,
+    "latitude": 32.6957,
+    "color": "#7451cc",
+    "collector": "柯镇海",
+    "audio": {
+      "url": "Audio/有钱难买五月旱，六月连阴吃饱饭.m4a",
+      "name": "有钱难买五月旱，六月连阴吃饱饭"
+    },
+    "content": "有钱难买五月旱，六月连阴吃饱饭"
+  },
+  {
+    "id": "dialect_33",
+    "location": "陕西安康汉滨区",
+    "province": "陕西省",
+    "longitude": 109.0293,
+    "latitude": 32.6957,
+    "color": "#7451cc",
+    "collector": "柯镇海",
+    "audio": {
+      "url": "Audio/重阳无雨看十三，十三无雨一冬干.m4a",
+      "name": "重阳无雨看十三，十三无雨一冬干"
+    },
+    "content": "重阳无雨看十三，十三无雨一冬干"
+  },
+  {
+    "id": "dialect_34",
+    "location": "安徽省阜阳市颍泉区",
+    "province": "安徽省",
+    "longitude": 115.807,
+    "latitude": 32.925,
+    "color": "#cc51bb",
+    "collector": "赫庆国",
+    "audio": {
+      "url": "Audio/春雨惊春清谷天，夏满芒夏暑相连。秋处露秋寒霜降，冬雪雪冬小大寒.mp3",
+      "name": "春雨惊春清谷天，夏满芒夏暑相连。秋处露秋寒霜降，冬雪雪冬小大寒"
+    },
+    "content": "春雨惊春清谷天，夏满芒夏暑相连。秋处露秋寒霜降，冬雪雪冬小大寒"
+  },
+  {
+    "id": "dialect_35",
+    "location": "安徽省阜阳市颍泉区",
+    "province": "安徽省",
+    "longitude": 115.807,
+    "latitude": 32.925,
+    "color": "#cc51bb",
+    "collector": "赫庆国",
+    "audio": {
+      "url": "Audio/有钱难买五月旱，六月连阴吃饱饭.mp3",
+      "name": "有钱难买五月旱，六月连阴吃饱饭"
+    },
+    "content": "有钱难买五月旱，六月连阴吃饱饭"
+  },
+  {
+    "id": "dialect_36",
+    "location": "陕西汉中勉县",
+    "province": "陕西省",
+    "longitude": 106.6736,
+    "latitude": 33.1557,
+    "color": "#7451cc",
+    "collector": "杨灿",
+    "audio": {
+      "url": "Audio/立夏不下，犁耙高挂.m4a",
+      "name": "立夏不下，犁耙高挂"
+    },
+    "content": "立夏不下，犁耙高挂"
+  },
+  {
+    "id": "dialect_37",
+    "location": "陕西汉中勉县",
+    "province": "陕西省",
+    "longitude": 106.6736,
+    "latitude": 33.1557,
+    "color": "#7451cc",
+    "collector": "杨灿",
+    "audio": {
+      "url": "Audio/山上没有树，水土保不住.m4a",
+      "name": "山上没有树，水土保不住"
+    },
+    "content": "山上没有树，水土保不住"
+  },
+  {
+    "id": "dialect_38",
     "location": "福建省宁德市周宁县",
     "province": "福建省",
     "longitude": 119.3455671296402,
@@ -22,8 +526,22 @@
     "color": "#cc5151",
     "collector": "张伟林",
     "audio": {
-      "url": "/Audio/春雾晴，夏雾雨，秋雾刮风，冬雾雪。.mp3",
-      "name": "春雾晴，夏雾雨，秋雾刮风，冬雾雪。"
+      "url": "Audio/年3天，端午3餐，中秋夜宵，重阳芋头.mp3",
+      "name": "年3天，端午3餐，中秋夜宵，重阳芋头"
+    },
+    "content": "年3天，端午3餐，中秋夜宵，重阳芋头。"
+  },
+  {
+    "id": "dialect_39",
+    "location": "福建省宁德市周宁县",
+    "province": "福建省",
+    "longitude": 119.3455671296402,
+    "latitude": 27.11023928044784,
+    "color": "#cc5151",
+    "collector": "张伟林",
+    "audio": {
+      "url": "Audio/春雾晴，夏雾雨，秋雾刮风，冬雾雪.mp3",
+      "name": "春雾晴，夏雾雨，秋雾刮风，冬雾雪"
     },
     "content": "春雾晴，夏雾雨，秋雾刮风，冬雾雪。"
   }

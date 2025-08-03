@@ -6,27 +6,41 @@ from pathlib import Path
 import re
 
 def extract_province(location):
-    """从地点名中提取省份信息"""
+    """从地点名中提取省份信息，支持省略"省"字的识别"""
     if not location or pd.isna(location):
         return "未知省份"
     
-    # 中国省份列表（包含直辖市、自治区、特别行政区）
+    # 优化省份列表：省略"省"字以扩大匹配范围，保留特殊行政区域全称
     provinces = [
-        "北京市", "天津市", "河北省", "山西省", "内蒙古自治区",
-        "辽宁省", "吉林省", "黑龙江省", "上海市", "江苏省",
-        "浙江省", "安徽省", "福建省", "江西省", "山东省",
-        "河南省", "湖北省", "湖南省", "广东省", "广西壮族自治区",
-        "海南省", "重庆市", "四川省", "贵州省", "云南省",
-        "西藏自治区", "陕西省", "甘肃省", "青海省", "宁夏回族自治区",
-        "新疆维吾尔自治区", "台湾省", "香港特别行政区", "澳门特别行政区"
+        "北京", "天津", "河北", "山西", "内蒙古",  # 原"内蒙古自治区"简化为"内蒙古"
+        "辽宁", "吉林", "黑龙江", "上海", "江苏",
+        "浙江", "安徽", "福建", "江西", "山东",
+        "河南", "湖北", "湖南", "广东", "广西",  # 原"广西壮族自治区"简化为"广西"
+        "海南", "重庆", "四川", "贵州", "云南",
+        "西藏", "陕西", "甘肃", "青海", "宁夏",  # 原"宁夏回族自治区"简化为"宁夏"
+        "新疆", "台湾", "香港", "澳门"           # 原"新疆维吾尔自治区"等简化
     ]
     
-    # 先尝试完全匹配
-    for province in provinces:
-        if province in location:
-            return province
+    # 省份全称映射（用于最终返回标准名称）
+    province_fullname = {
+        "北京": "北京市", "天津": "天津市", "河北": "河北省", "山西": "山西省",
+        "内蒙古": "内蒙古自治区", "辽宁": "辽宁省", "吉林": "吉林省", "黑龙江": "黑龙江省",
+        "上海": "上海市", "江苏": "江苏省", "浙江": "浙江省", "安徽": "安徽省",
+        "福建": "福建省", "江西": "江西省", "山东": "山东省", "河南": "河南省",
+        "湖北": "湖北省", "湖南": "湖南省", "广东": "广东省", "广西": "广西壮族自治区",
+        "海南": "海南省", "重庆": "重庆市", "四川": "四川省", "贵州": "贵州省",
+        "云南": "云南省", "西藏": "西藏自治区", "陕西": "陕西省", "甘肃": "甘肃省",
+        "青海": "青海省", "宁夏": "宁夏回族自治区", "新疆": "新疆维吾尔自治区",
+        "台湾": "台湾省", "香港": "香港特别行政区", "澳门": "澳门特别行政区"
+    }
     
-    # 再尝试匹配省份简称
+    # 1. 优先匹配简化后的省份名（支持省略"省"字）
+    for province in provinces:
+        # 宽松匹配：只要地点名中包含省份关键词即可（如"江苏南京"匹配"江苏"）
+        if re.search(province, location):
+            return province_fullname[province]
+    
+    # 2. 匹配省份简称（保持不变）
     province_abbr = {
         "京": "北京市", "津": "天津市", "冀": "河北省", "晋": "山西省", 
         "蒙": "内蒙古自治区", "辽": "辽宁省", "吉": "吉林省", "黑": "黑龙江省",
@@ -43,11 +57,23 @@ def extract_province(location):
         if abbr in location:
             return province
     
-    # 特殊处理常见城市所属省份
+    # 3. 城市映射扩展（增加更多地级市）
     city_to_province = {
+        # 一线城市
         "北京": "北京市", "上海": "上海市", "天津": "天津市", "重庆": "重庆市",
-        "广州": "广东省", "深圳": "广东省", "杭州": "浙江省", "南京": "江苏省",
-        "成都": "四川省", "武汉": "湖北省", "西安": "陕西省", "沈阳": "辽宁省"
+        # 各省主要城市
+        "广州": "广东省", "深圳": "广东省", "珠海": "广东省",
+        "杭州": "浙江省", "宁波": "浙江省", "温州": "浙江省",
+        "南京": "江苏省", "苏州": "江苏省", "无锡": "江苏省",
+        "成都": "四川省", "绵阳": "四川省",
+        "武汉": "湖北省", "宜昌": "湖北省",
+        "西安": "陕西省", "咸阳": "陕西省",
+        "沈阳": "辽宁省", "大连": "辽宁省",
+        "济南": "山东省", "青岛": "山东省",
+        "郑州": "河南省", "洛阳": "河南省",
+        "长沙": "湖南省", "株洲": "湖南省",
+        "合肥": "安徽省", "福州": "福建省",
+        "南昌": "江西省", "昆明": "云南省"
     }
     for city, province in city_to_province.items():
         if city in location:
@@ -98,13 +124,14 @@ def generate_province_colors(provinces):
     
     return dict(colors)
 
-def generate_dialect_json(excel_path, output_json="dialect_data.json"):
+def generate_dialect_json(excel_path, output_json="dialect_data.json", audio_prefix=""):
     """
     读取包含方言数据的Excel文件，按省份分配颜色并生成JSON格式数据
     
     参数:
     excel_path: Excel文件路径
     output_json: 输出的JSON文件路径
+    audio_prefix: 音频URL的前缀（如服务器地址等）
     """
     try:
         # 读取Excel文件
@@ -114,7 +141,7 @@ def generate_dialect_json(excel_path, output_json="dialect_data.json"):
             header=0
         )
         
-        # 提取省份信息
+        # 提取省份信息（使用优化后的识别逻辑）
         df["省份"] = df["地点名"].apply(extract_province)
         
         # 获取所有唯一省份并生成颜色映射
@@ -133,8 +160,11 @@ def generate_dialect_json(excel_path, output_json="dialect_data.json"):
                 longitude = 0.0
                 latitude = 0.0
             
-            # 处理音频路径
+            # 处理音频路径，添加前缀
             audio_url = row["音频"] if pd.notnull(row["音频"]) else ""
+            # 拼接音频前缀和原始URL
+            full_audio_url = f"{audio_prefix}{audio_url}" if audio_url else ""
+            
             audio_name = ""
             if audio_url:
                 # 提取音频文件名（不含路径和扩展名）
@@ -154,7 +184,7 @@ def generate_dialect_json(excel_path, output_json="dialect_data.json"):
                 "color": color,  # 新增颜色字段（按省份分配）
                 "collector": row["采集人"] if pd.notnull(row["采集人"]) else "未知采集人",
                 "audio": {
-                    "url": audio_url,
+                    "url": full_audio_url,  # 使用带前缀的URL
                     "name": audio_name
                 },
                 "content": row["内容"] if pd.notnull(row["内容"]) else "无内容描述"
@@ -168,6 +198,8 @@ def generate_dialect_json(excel_path, output_json="dialect_data.json"):
         
         print(f"成功生成按省份着色的JSON数据: {output_json}")
         print(f"共包含 {len(dialect_list)} 条方言记录，涉及 {len(unique_provinces)} 个省份")
+        if audio_prefix:
+            print(f"已为所有音频URL添加前缀: {audio_prefix}")
         return True
         
     except Exception as e:
@@ -177,9 +209,11 @@ def generate_dialect_json(excel_path, output_json="dialect_data.json"):
 if __name__ == "__main__":
     # 替换为你的Excel文件路径
     excel_file = "Data.xlsx"
+    # 音频URL前缀，例如"http://example.com/audio/"或"audio_files/"
+    audio_prefix = "Audio/"
     
     # 检查文件是否存在
     if not Path(excel_file).exists():
         print(f"错误: 找不到文件 {excel_file}")
     else:
-        generate_dialect_json(excel_file)
+        generate_dialect_json(excel_file, audio_prefix=audio_prefix)

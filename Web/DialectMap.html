@@ -776,6 +776,54 @@
                 font-size: 20px !important;
             }
         }
+        
+        .list-container {
+            /* 与右侧地图容器高度保持一致 */
+            height: 600px;
+            /* 匹配地图容器的 min-height: 600px */
+            overflow-y: auto;
+            /* 内容过长时显示垂直滚动条 */
+            overflow-x: hidden;
+            /* 隐藏水平滚动条 */
+            position: relative;
+        }
+        /* 自定义滚动条样式 - 与整体风格统一 */
+        
+        .list-container::-webkit-scrollbar {
+            width: 6px;
+            /* 滚动条宽度 */
+        }
+        
+        .list-container::-webkit-scrollbar-track {
+            background: #f9f4ef;
+            /* 滚动条轨道颜色（匹配页面背景） */
+            border-radius: 3px;
+        }
+        
+        .list-container::-webkit-scrollbar-thumb {
+            background-color: #9c2c1a;
+            /* 滚动条颜色（主色调） */
+            border-radius: 3px;
+            /* 圆角与整体风格统一 */
+            transition: background-color 0.3s;
+        }
+        
+        .list-container::-webkit-scrollbar-thumb:hover {
+            background-color: #c75146;
+            /*  hover时加深颜色 */
+        }
+        /* 响应式调整 - 在移动端保持高度匹配 */
+        
+        @media (max-width: 768px) {
+            .list-container {
+                height: 350px;
+                /* 移动端与地图容器高度（500px）比例适配 */
+            }
+            .map-container {
+                height: 500px;
+                /* 确保移动端地图高度固定 */
+            }
+        }
     </style>
 </head>
 
